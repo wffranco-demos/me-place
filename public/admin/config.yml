@@ -28,5 +28,7 @@ collections:
         name: "image"
         widget: "list"
         summary: '{{fields.image}}'
-        field: {label: Image, name: image, widget: image}
+        fields:
+        - {label: Alt, name: alt, widget: string}
+        - {label: Image, name: src, widget: image}
       
