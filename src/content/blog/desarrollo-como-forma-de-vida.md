@@ -7,7 +7,7 @@ tags:
   - news
 title: Desarrollo como forma de vida
 slug: desarrollo-como-forma-de-vida
-publishDate: 2023-02-08T18:30:57.046Z
+publishDate: 2023-02-08 18:30
 snippet: Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet
   nisl tempus convallis quis ac lectus
 image:
