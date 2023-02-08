@@ -4,6 +4,6 @@ title: Senior Director
 publishDate: 2022-11-07 15:39
 draft: false
 avatar:
-  src: https://images.unsplash.com/photo-1580489944761-15a19d654956?&fit=crop&w=280
+  src: /images/311571389_1464335557310788_6105909985588883921_n.jpg
   alt: Ramon Rivas
 ---
