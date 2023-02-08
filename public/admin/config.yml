@@ -30,4 +30,19 @@ collections:
         fields:
         - {label: Alt, name: alt, widget: string}
         - {label: Image, name: src, widget: image}
+  - name: "team" # Used in routes, e.g., /admin/collections/blog
+    label: "Team" # Used in the UI
+    folder: "src/content/team" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    fields: # The fields for each document, usually in front matter
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "publishDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: "HH:mm"}
+      - {label: "draft", name: "draft",  widget: "hidden", default: false}
+      - label: "Avatar"
+        name: "avatar"
+        widget: "object"
+        fields:
+        - {label: Alt, name: alt, widget: string}
+        - {label: Avatar, name: src, widget: image}
       
