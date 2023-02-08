@@ -6,7 +6,7 @@ publishDate: 2023-02-08T17:14:18.427Z
 image: /assets/4.1.jpg
 tags:
   - blog
-draft: true
+draft: false
 category: varios
 author: Miharbi Hernandez
 ---
