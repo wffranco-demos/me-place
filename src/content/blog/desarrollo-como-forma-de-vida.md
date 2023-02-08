@@ -1,6 +1,6 @@
 ---
 author: Miharbi Hernandez
-category: Portafolio
+category: Portafolio, summit
 tags:
   - blog
   - news
