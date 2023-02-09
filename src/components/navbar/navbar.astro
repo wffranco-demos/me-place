@@ -1,33 +1,45 @@
 ---
 import Container from "@components/container.astro";
+import { Picture } from "@astrojs/image/components";
+import logo from "/logo/logo-no-background.svg";
+
 import Link from "@components/ui/link.astro";
 import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 
 const menuitems = [
-  {
-    title: "Features",
-    path: "#",
-    children: [
-      { title: "Action", path: "#" },
-      { title: "Another action", path: "#" },
-      { title: "Dropdown Submenu", path: "#" },
-    ],
-  },
-  {
-    title: "Pricing",
-    path: "/pricing",
-  },
-  {
-    title: "About",
-    path: "/about",
-  },
+  // {
+  //   title: "Features",
+  //   path: "#",
+  //   children: [
+  //     { title: "Action", path: "#" },
+  //     { title: "Another action", path: "#" },
+  //     { title: "Dropdown Submenu", path: "#" },
+  //   ],
+  // },
+  // {
+  //   title: "Pricing",
+  //   path: "/pricing",
+  // },
+  // {
+  //   title: "Servicios",
+  //   path: "/services",
+  // },
   {
     title: "Blog",
     path: "/blog",
   },
   {
-    title: "Contact",
+    title: "Nosotros",
+    path: "/about",
+  },
+  {
+    title: "Portafolio",
+    path: "#",
+    // path: "/portfolio",
+  },
+  {
+    title: "Contacto",
     path: "/contact",
   },
 ];
@@ -38,9 +50,9 @@ const menuitems = [
     <Astronav>
       <div class="flex w-full lg:w-auto items-center justify-between">
         <a href="/" class="text-lg"
-          ><span class="font-bold text-slate-800">Astro</span><span
-            class="text-slate-500">ship</span
           >
+          <img src={logo} width="180" alt="Summit Software" />
+
         </a>
         <div class="block lg:hidden">
           <MenuIcon class="w-4 h-4 text-gray-800" />
@@ -78,11 +90,11 @@ const menuitems = [
         </div>
       </MenuItems>
     </Astronav>
-    <div>
+    <!-- <div>
       <div class="hidden lg:flex items-center gap-4">
         <a href="#">Log in</a>
         <Link href="#" size="md">Sign up</Link>
       </div>
-    </div>
+    </div> -->
   </header>
 </Container>
