@@ -1,6 +1,6 @@
 ---
 import Container from "@components/container.astro";
-import { Picture } from "@astrojs/image/components";
+import { Image } from "@astrojs/image/components";
 import logo from "/logo/logo-no-background.svg";
 
 import Link from "@components/ui/link.astro";
@@ -51,8 +51,7 @@ const menuitems = [
       <div class="flex w-full lg:w-auto items-center justify-between">
         <a href="/" class="text-lg"
           >
-          <img src={logo} width="180" alt="Summit Software" />
-
+          <Image src={logo} width={180} height={40}  aspectRatio="1:1" format="png" alt="Summit Software" />
         </a>
         <div class="block lg:hidden">
           <MenuIcon class="w-4 h-4 text-gray-800" />

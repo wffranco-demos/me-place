@@ -11,7 +11,7 @@ export interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 const resolvedImageWithDomain = new URL(
-  "/opengraph.jpg",
+  "/opengraph.png",
   Astro.site
 ).toString();
 
@@ -33,22 +33,22 @@ const makeTitle = title
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="Astroship is a starter website template for Astro built with TailwindCSS."
+      description="Especialistas en desarrollo de aplicaciones moviles y software a la medida"
       canonical={canonicalURL}
       twitter={{
-        creator: "@surjithctly",
-        site: "@web3templates",
+        creator: "@mihrbi",
+        site: "@summitsoftware",
         card: "summary_large_image",
       }}
       openGraph={{
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Astroship - Starter Template for Astro`,
+          title: makeTitle,
           image: resolvedImageWithDomain,
         },
         image: {
-          alt: "Astroship Homepage Screenshot",
+          alt: "Summit Software Homepage Screenshot",
         },
       }}
     />
@@ -57,7 +57,7 @@ const makeTitle = title
     <Navbar />
     <slot />
     <Footer />
-    <script>
+    <!-- <script>
       declare global {
         interface Window {
           netlifyIdentity: any;
@@ -73,7 +73,7 @@ const makeTitle = title
           }
         });
       }
-    </script>
+    </script> -->
     <style is:global>
       /* Improve Page speed */
       /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
