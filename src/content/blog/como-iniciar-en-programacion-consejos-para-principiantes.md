@@ -12,7 +12,7 @@ tags:
   - web
 title: "Cómo iniciar tu carrera en programación: Consejos para principiantes"
 slug: como-iniciar-en-programacion-consejos-para-principiantes
-publishDate: 2023-06-29T20:53:07.225Z
+publishDate: "2021-10-10 00:00:00"
 snippet: La programación es una habilidad cada vez más demandada en el mundo
   laboral actual. Si estás interesado en iniciar tu carrera en programación,
   estás en el lugar correcto. En esta sección, te brindaremos algunos consejos
@@ -41,11 +41,15 @@ Antes de sumergirte en proyectos complejos, es fundamental que domines los conce
 
 Una vez que tengas una base sólida en los conceptos básicos, es hora de practicar. La mejor manera de aprender a programar es a través de la práctica. Comienza realizando proyectos pequeños y a medida que adquieras más experiencia, desafíate a ti mismo con proyectos más complejos. Esto te permitirá aplicar tus conocimientos y desarrollar tus habilidades.
 
-### 5. Únete a una comunidad de programadores
+### 5. Aprende a usar Git y GitHub
+
+Git es un sistema de control de versiones que te permite realizar un seguimiento de los cambios en tu código. GitHub es una plataforma que te permite almacenar y compartir tu código con otros desarrolladores. Aprender a usar Git y GitHub te ayudará a colaborar con otros programadores y a mejorar tus habilidades de desarrollo de software. Github por otro lado es una bliblioteca de codigo abierto donde puedes encontrar codigo de otros desarrolladores y compartir el tuyo.
+
+### 6. Únete a una comunidad de programadores
 
 La programación es un campo colaborativo, y unirte a una comunidad de programadores puede ser de gran ayuda. Participa en foros en línea, asiste a eventos de programación y encuentra mentores que puedan ayudarte en tu camino. La retroalimentación y el apoyo de otras personas en la industria pueden ser invaluables para tu desarrollo como programador.
 
-### 6. Nunca dejes de aprender
+### 7. Nunca dejes de aprender
 
 La programación es un campo en constante evolución, por lo que es esencial que te mantengas actualizado con las últimas tendencias y tecnologías. Dedica tiempo regularmente a aprender nuevas habilidades y mejorar tus conocimientos existentes. Esto te permitirá mantener tu relevancia en el mercado laboral y seguir creciendo como profesional.
 
