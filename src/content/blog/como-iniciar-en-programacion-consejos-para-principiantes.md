@@ -12,7 +12,7 @@ tags:
   - web
 title: "Cómo iniciar tu carrera en programación: Consejos para principiantes"
 slug: como-iniciar-en-programacion-consejos-para-principiantes
-publishDate: "2021-10-10 00:00:00"
+publishDate: 2021-10-10 00:00:00
 snippet: La programación es una habilidad cada vez más demandada en el mundo
   laboral actual. Si estás interesado en iniciar tu carrera en programación,
   estás en el lugar correcto. En esta sección, te brindaremos algunos consejos
