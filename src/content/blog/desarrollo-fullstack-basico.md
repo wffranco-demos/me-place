@@ -10,7 +10,7 @@ tags:
   - apps
   - aplicaciones
 title: "Cómo iniciar tu carrera en programación: Consejos para principiantes"
-slug: como-iniciar-tu-carrera-en-programacion
+slug: desarrollo-fullstack-basico
 publishDate: 2023-06-29T20:53:07.225Z
 snippet: La programación es una habilidad cada vez más demandada en el mundo
   laboral actual. Si estás interesado en iniciar tu carrera en programación,
