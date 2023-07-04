@@ -2,62 +2,62 @@
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
-import Pricing from "@components/pricing.astro";
+import PricingComponent from "@components/pricing.astro";
 
 const pricing = [
   {
-    name: "Personal",
-    price: "Free",
+    name: "Conocenos",
+    price: {
+      monthly: "$1000/mes",
+      annual: "$10000",
+      discount: "10%",
+      original: "$1100",
+    },
     popular: false,
     features: [
-      "Lifetime free",
-      "Up to 3 users",
-      "Unlimited Pages",
-      "Astro Sub domain",
-      "Basic Integrations",
-      "Community Support",
+      "4 Horas de asesoria general remota",
+      "10 horas de desarrollo de emergencia remoto",
+      "1 Informe de recomendaciones",
     ],
     button: {
-      text: "Get Started",
-      link: "/",
-    },
-  },
-  {
-    name: "Startup",
-    price: {
-      monthly: "$19",
-      annual: "$16",
-      discount: "10%",
-      original: "$24",
-    },
-    popular: true,
-    features: [
-      "All Free Features",
-      "Up to 20 users",
-      "20 Custom domains",
-      "Unlimited Collaborators",
-      "Advanced Integrations",
-      "Priority Support",
-    ],
-    button: {
-      text: "Get Started",
+      text: "Empezar",
       link: "#",
     },
   },
   {
-    name: "Enterprise",
+    name: "Integrate",
+    price: {
+      monthly: "$5000/mes",
+      annual: "$50000",
+      discount: "10%",
+      original: "$5500",
+    },
+    popular: true,
+    features: [
+      "10 horas de asesoria remota, reuniones semanales",
+      "60 horas de desarrollo remoto, entregas semanales",
+      "Integraciones de API, CRM, ERP, etc",
+    ],
+    button: {
+      text: "Empezar",
+      link: "#",
+    },
+  },
+  {
+    name: "Seamos socios",
     price: "Custom",
     popular: false,
     features: [
-      "All Pro Features",
-      "Unlimited Custom domains",
-      "99.99% Uptime SLA",
-      "SAML & SSO Integration",
-      "Dedicated Account Manager",
-      "24/7 Phone Support",
+      "Programadores in house",
+      "Asesores dedicados",
+      "Desarrolladores dedicados",
+      "Reuniones diarias (dealy standup)",
+      "Scrum master",
+      "Integraciones de API, CRM, ERP, etc",
+      "Soporte 24/7",
     ],
     button: {
-      text: "Contact us",
+      text: "Contactanos",
       link: "/contact",
     },
   },
@@ -67,14 +67,15 @@ const pricing = [
 <Layout title="Pricing">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Pricing</Fragment>
-      <Fragment slot="desc"
-        >Simple & Predictable pricing. No Surprises.</Fragment
+      <Fragment slot="title">Precios</Fragment>
+      <Fragment slot="desc">
+        Olvida los costos de contratación, de oficina, de equipo, deja que nosotros nos encarguemos de todo, tu solo enfocate en tu negocio.
+      </Fragment
       >
     </Sectionhead>
 
     <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-screen-lg mt-12">
-      {pricing.map((item) => <Pricing plan={item} />)}
+      {pricing.map((item) => <PricingComponent plan={item} />)}
     </div>
   </Container>
 </Layout>

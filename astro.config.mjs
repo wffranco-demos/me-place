@@ -5,7 +5,7 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://astroship.web3templates.com",
+  site: "https://summitsoftware.cl",
   integrations: [
     tailwind(),
     image({
@@ -14,4 +14,7 @@ export default defineConfig({
     mdx(),
     sitemap(),
   ],
+  experimental: {
+    assets: true
+   }
 });
