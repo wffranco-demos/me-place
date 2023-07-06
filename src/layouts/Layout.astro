@@ -4,7 +4,7 @@ import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar/navbar.astro";
 import "@fontsource/inter/variable.css";
 
-const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const canonical = new URL(Astro.url.pathname, Astro.site).toString().toLowerCase();
 
 const { 
   title, 
@@ -14,7 +14,7 @@ const {
   } = Astro.props;
 
 const makedTitle = title || "Materializa tus ideas en software";
-const makedDescription = description || "Summit Software es una empresa de desarrollo de software a medida para empresas.";
+const makedDescription = (description || "Summit Software es una empresa de desarrollo de software a medida para empresas.").substring(0, 160);
 const makedImageAlt = imageAlt || "Summit Software";
 const makedImage = new URL( image || "/logo/logo-color.svg", Astro.site).toString();
 
