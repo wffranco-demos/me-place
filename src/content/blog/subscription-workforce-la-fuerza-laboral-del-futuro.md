@@ -1,6 +1,6 @@
 ---
 author: Willem Franco
-category: promociones, contratacion
+category: promociones, contratacion, publicidad
 tags:
   - blog
   - Subscription-Workforce
