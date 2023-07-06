@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Cta from "@components/cta.astro";
+import { Picture } from "@astrojs/image/components";
 
 // Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -28,9 +29,6 @@ const { Content } = await entry.render();
         class="text-4xl lg:text-5xl font-bold lg:tracking-tight mt-1 lg:leading-tight">
         {entry.data.title}
       </h1>
-      <p class="mt-3 text-gray-500">
-        {entry.data.snippet}
-      </p>
       <div class="flex gap-2 mt-3 items-center flex-wrap md:flex-nowrap">
         <span class="text-gray-400">
           {entry.data.author}
@@ -50,10 +48,24 @@ const { Content } = await entry.render();
           }
         </div>
       </div>
+      <p class="mt-3 text-gray-500">
+        {entry.data.snippet}
+      </p>
     </div>
 
     <div class="mx-auto max-w-5xl prose prose-lg mt-6">
-        <Content />
+      <Picture
+        src={entry.data.image.src}
+        alt={entry.data.image.alt}
+        sizes="(max-width: 640px) 100vw, 640px"
+        widths={[200, 400, 640]}
+        aspectRatio="4:1"
+        background="#ffffff"
+        fit="cover"
+        position="center"
+        class="w-full rounded-md"
+      />
+      <Content />
     </div>
     <div class="text-center mt-8">
       <a
