@@ -4,22 +4,20 @@ import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar/navbar.astro";
 import "@fontsource/inter/variable.css";
 
-export interface Props {
-  title: string;
-}
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+const { 
+  title, 
+  description,
+  image,
+  imageAlt,
+  } = Astro.props;
 
-const resolvedImageWithDomain = new URL(
-  "/opengraph.png",
-  Astro.site
-).toString();
+const makedTitle = title || "Materializa tus ideas en software";
+const makedDescription = description || "Summit Software es una empresa de desarrollo de software a medida para empresas.";
+const makedImageAlt = imageAlt || "Summit Software";
+const makedImage = new URL( image || "/logo/logo-color.svg", Astro.site).toString();
 
-const { title } = Astro.props;
-
-const makeTitle = title
-  ? title + " | " + "Summit Software"
-  : "Summit Software - Materializa tus ideas en software";
 ---
 
 <!DOCTYPE html>
@@ -31,9 +29,9 @@ const makeTitle = title
     <meta name="generator" content={Astro.generator} />
     <script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <SEO
-      title={makeTitle}
-      description="Especialistas en desarrollo de software a medida para empresas."
-      canonical={canonicalURL}
+      title={makedTitle}
+      description={makedDescription}
+      canonical={canonical}
       twitter={{
         creator: "@mihrbi",
         site: "@summitsoftware",
@@ -41,13 +39,13 @@ const makeTitle = title
       }}
       openGraph={{
         basic: {
-          url: canonicalURL,
+          url: canonical,
           type: "website",
-          title: title ? title : "Summit Software",
-          image: resolvedImageWithDomain,
+          title: makedTitle + " - Summit Software",
+          image: makedImage,
         },
         image: {
-          alt: "Summit Software Homepage Screenshot",
+          alt: makedImageAlt,
         },
       }}
     />
