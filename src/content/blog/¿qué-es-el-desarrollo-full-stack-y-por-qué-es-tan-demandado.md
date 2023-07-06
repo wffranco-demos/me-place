@@ -13,7 +13,7 @@ snippet: En el mundo de la tecnología, el desarrollo Full Stack se ha convertid
   empresas?
 draft: false
 image:
-  src: /images/zan-x_jsi_9hl7o-unsplash.jpg
+  src: https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80
   alt: desarrollador
 ---
 El término "Full Stack" hace referencia a un desarrollador que tiene habilidades y conocimientos tanto en el desarrollo del lado del cliente (front-end) como en el desarrollo del lado del servidor (back-end). En otras palabras, un desarrollador Full Stack tiene la capacidad de trabajar en todas las capas de una aplicación web, desde la interfaz de usuario hasta la base de datos.
