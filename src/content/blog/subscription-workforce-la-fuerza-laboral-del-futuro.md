@@ -20,6 +20,8 @@ image:
   src: /images/alex-kotliarskyi-qbpzgqemskg-unsplash.jpg
   alt: Workforce
 ---
+![](/images/alex-kotliarskyi-qbpzgqemskg-unsplash.jpg)
+
 ¿Qué es la Subscription Workforce? La Subscription Workforce se refiere a un modelo de contratación en el que las empresas no contratan empleados a tiempo completo, sino que acceden a una "fuerza laboral por suscripción" para cubrir sus necesidades específicas. En lugar de contratar empleados permanentes, las empresas se suscriben a servicios o plataformas que les proporcionan acceso a profesionales altamente capacitados y flexibles.
 
 Ventajas para las empresas: Este modelo tiene numerosas ventajas para las empresas. En primer lugar, les brinda una mayor flexibilidad, ya que pueden ajustar fácilmente su fuerza laboral según las necesidades cambiantes del mercado. Además, reduce los costos de contratación y despido, ya que no es necesario comprometerse con empleados a largo plazo. Las empresas también pueden acceder a un talento especializado y diverso de manera más rápida y eficiente.
