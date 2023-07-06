@@ -1,17 +1,17 @@
 ---
-author: miharbi
+author: Miharbi Hernandez
 category: programacion
+title: ¿Qué es el desarrollo Full Stack y por qué es tan demandado?
 tags:
   - blog
   - full-stack
-title: ¿Qué es el desarrollo Full Stack y por qué es tan demandado?
-slug: Full-Stack-por-que-es-tan-demandado
 publishDate: 2023-07-06T16:59:21.902Z
 snippet: En el mundo de la tecnología, el desarrollo Full Stack se ha convertido
   en uno de los perfiles más demandados en la industria. Pero, ¿qué es
   exactamente el desarrollo Full Stack y por qué es tan valorado por las
   empresas?
 draft: false
+slug: Full-Stack-por-que-es-tan-demandado
 image:
   src: https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80
   alt: desarrollador
