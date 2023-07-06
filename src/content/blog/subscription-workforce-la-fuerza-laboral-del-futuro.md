@@ -1,10 +1,11 @@
 ---
 author: Willem Franco
-category: promociones, contratacion, publicidad
+category: Promociones, Fuerza laboral
 tags:
   - blog
   - Subscription-Workforce
   - fuerza-laboral
+  - futuro
 title: "Subscription Workforce: La fuerza laboral del futuro"
 slug: Subscription-Workforce
 publishDate: 2023-07-06T17:39:57.064Z
