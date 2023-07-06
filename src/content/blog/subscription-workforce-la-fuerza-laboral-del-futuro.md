@@ -17,7 +17,7 @@ snippet: En la era digital en la que vivimos, la forma en que trabajamos está
   trabajadores se relacionan en el mundo laboral.
 draft: false
 image:
-  src: /images/alex-kotliarskyi-qbpzgqemskg-unsplash.jpg
+  src: https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80
   alt: Workforce
 ---
 ¿Qué es la Subscription Workforce? La Subscription Workforce se refiere a un modelo de contratación en el que las empresas no contratan empleados a tiempo completo, sino que acceden a una "fuerza laboral por suscripción" para cubrir sus necesidades específicas. En lugar de contratar empleados permanentes, las empresas se suscriben a servicios o plataformas que les proporcionan acceso a profesionales altamente capacitados y flexibles.
