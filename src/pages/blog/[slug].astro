@@ -19,7 +19,7 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<Layout title={entry.data.title} image={entry.data.image.src} imageAlt={entry.data.image.alt} description="{entry.data.snippet}">
+<Layout title={entry.data.title} image={entry.data.image.src} imageAlt={entry.data.image.alt} description={entry.data.snippet}>
   <Container>
     <div class="mx-auto max-w-5xl mt-14">
       <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
