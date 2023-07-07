@@ -8,8 +8,8 @@ media_folder: "public/images" # Media files will be stored in the repo under sta
 public_folder: "/images" # The src attribute for uploaded media will begin with /images/uploads
 
 collections:
-  - name: "blog" # Used in routes, e.g., /admin/collections/blog
-    label: "Blog" # Used in the UI
+  - label: "Blog" # Used in the UI
+    name: "blog" # Used in routes, e.g., /admin/collections/blog
     folder: "src/content/blog" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
@@ -23,8 +23,16 @@ collections:
         collection: "team"
         search_fields: ["name"]
         value_field: "name"
-      - {label: "Category", name: "category", widget: "string"}
-      - {label: "Categories", name: "categories", widget: "string-array"}
+      - label: "Categories"
+        name: "categories"
+        widget: "relation"
+        collection: "options"
+        multiple: true
+        min: 1
+        search_fields: ["categories"]
+        value_field: "categories"
+      # - {label: "Category", name: "category", widget: "string"}
+      # - {label: "Categories", name: "categories", widget: "string-array"}
       - {label: "Tags", name: "tags", widget: "list", allow_add: true, default: ["blog"]}
       - {label: "Description", name: "snippet", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
@@ -35,8 +43,8 @@ collections:
         fields:
         - {label: Alt, name: alt, widget: string}
         - {label: Image, name: src, widget: image}
-  - name: "team" # Used in routes, e.g., /admin/collections/blog
-    label: "Team" # Used in the UI
+  - label: "Team" # Used in the UI
+    name: "team" # Used in routes, e.g., /admin/collections/blog
     folder: "src/content/team" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     fields: # The fields for each document, usually in front matter
@@ -51,8 +59,8 @@ collections:
         - {label: Alt, name: alt, widget: string}
         - {label: Avatar, name: src, widget: image}
       - {label: "Body", name: "body", widget: "markdown"}
-  - name: "prices" # Used in routes, e.g., /admin/collections/blog
-    label: "Prices" # Used in the UI
+  - label: "Prices" # Used in the UI
+    name: "prices" # Used in routes, e.g., /admin/collections/blog
     folder: "src/content/prices" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     fields: # The fields for each document, usually in front matter
@@ -77,4 +85,12 @@ collections:
         fields:
         - {label: "Text", name: "text", widget: "string"}
         - {label: "Link", name: "link", widget: "string"}
+  - label: "Admin"
+    name: "admin"
+    files:
+    - label: "Options"
+      name: "options"
+      file: "public/admin/options.yml"
+      fields: # The fields for each document, usually in front matter
+      - {label: "Categories", name: "categories", widget: "string-array"}
       
