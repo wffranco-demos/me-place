@@ -71,7 +71,7 @@ const menuitems = [
             ) : (
               <li>
                 <a
-                  href={item.path}
+                  href={item.disabled ? '#' : item.path}
                   class="flex lg:px-3 py-2 text-gray-600 hover:text-gray-900">
                   {item.title}
                 </a>
