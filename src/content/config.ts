@@ -38,9 +38,32 @@ const teamCollection = defineCollection({
   }),
 });
 
+const priceCollection = defineCollection({
+  schema: z.object({
+    draft: z.boolean(),
+    name: z.string(),
+    type: z.string(),
+    price: z.object({
+      current: zz.undef(z.number()),
+      previous: zz.undef(z.number()),
+    }),
+    currency: z.string().default('$'),
+    popular: z.boolean(),
+    features: z.array(z.string()),
+    publishDate: z.date(),
+    expirationDate: zz.undef(z.date()),
+    button: z.object({
+      text: z.string(),
+      link: z.string(),
+    }),
+    order: zz.undef(z.number()),
+  }),
+});
+
 // 3. Export a single `collections` object to register your collection(s)
 //    This key should match your collection directory name in "src/content"
 export const collections = {
   'blog': blogCollection,
+  'prices': priceCollection,
   'team': teamCollection,
 };

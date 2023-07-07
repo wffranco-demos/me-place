@@ -2,66 +2,14 @@
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
-import PricingComponent from "@components/pricing.astro";
+import PriceComponent from "@components/price.astro";
+import { getCollection } from "astro:content";
+import { getActive } from "@utils/all";
 
-const pricing = [
-  {
-    name: "Conocenos",
-    price: {
-      monthly: "$1000/mes",
-      annual: "$10000",
-      discount: "30%",
-      original: "$1500",
-    },
-    popular: false,
-    features: [
-      "4 Horas de asesoria general remota",
-      "10 horas de desarrollo de emergencia remoto",
-      "1 Informe de recomendaciones",
-    ],
-    button: {
-      text: "Empezar",
-      link: "#",
-    },
-  },
-  {
-    name: "Integrate",
-    price: {
-      monthly: "$5000/mes",
-      annual: "$50000",
-      discount: "40%",
-      original: "$8500",
-    },
-    popular: true,
-    features: [
-      "10 horas de asesoria remota, reuniones semanales",
-      "60 horas de desarrollo remoto, entregas semanales",
-      "Integraciones de API, CRM, ERP, etc",
-    ],
-    button: {
-      text: "Empezar",
-      link: "#",
-    },
-  },
-  {
-    name: "Seamos socios",
-    price: "Custom",
-    popular: false,
-    features: [
-      "Programadores in house",
-      "Asesores dedicados",
-      "Desarrolladores dedicados",
-      "Reuniones diarias (dealy standup)",
-      "Administración de Scrum",
-      "Integraciones de API, CRM, ERP, etc",
-      "Soporte 24/7",
-    ],
-    button: {
-      text: "Contactanos",
-      link: "/contact",
-    },
-  },
-];
+// Filter active menbers (entries with draft: false, published before current date and expiration after current date)
+const now = new Date;
+const collection = await getCollection("prices", ({ data }) => getActive(data, now));
+const publishedPrices = collection.map(({data}) => data);
 ---
 
 <Layout title="Pricing">
@@ -69,13 +17,15 @@ const pricing = [
     <Sectionhead>
       <Fragment slot="title">Precios</Fragment>
       <Fragment slot="desc">
-        Olvida los costos de contratación, de oficina, de equipo, deja que nosotros nos encarguemos de todo, tu solo enfocate en tu negocio.
-      </Fragment
-      >
+        <span>Evita contratar personal para que desarrollen tus aplicaciones...</span>
+        <span>Deja que nosotros nos encarguemos de eso, y tú enfócate en tu negocio.</span>
+      </Fragment>
     </Sectionhead>
 
-    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-screen-lg mt-12">
-      {pricing.map((item) => <PricingComponent plan={item} />)}
+    <div class="flex flex-wrap justify-evenly gap-5 mx-auto max-w-screen-lg mt-12">
+      {publishedPrices.map((item) => (
+        <PriceComponent plan={item} />
+      ))}
     </div>
   </Container>
 </Layout>

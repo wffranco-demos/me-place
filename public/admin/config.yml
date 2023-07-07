@@ -65,6 +65,7 @@ collections:
   - label: "Prices" # Used in the UI
     name: "prices" # Used in routes, e.g., /admin/collections/blog
     folder: "src/content/prices" # The path to the folder where the documents are stored
+    slug: "{{year}}-{{month}}-{{day}}-{{name}}" # Filename template, e.g., YYYY-MM-DD-title.md
     create: true # Allow users to create new documents in this collection
     fields: # The fields for each document, usually in front matter
       - {label: "draft", name: "draft",  widget: "hidden", default: false}
@@ -89,6 +90,7 @@ collections:
       - {label: "Features", name: "features", widget: "string-array"}
       - {label: "Publish Date", name: "publishDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: "HH:mm"}
       - {label: "Expiration Date", name: "expirationDate", widget: "datetime", default: "", date_format: "YYYY-MM-DD", time_format: "HH:mm", required: false}
+      - {label: "Order", name: "order",  widget: "number", required: false}
       - label: "Button"
         name: "button"
         widget: "object"

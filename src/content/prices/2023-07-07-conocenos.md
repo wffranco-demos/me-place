@@ -5,6 +5,7 @@ type: monthly
 price:
   current: 1000
   previous: 1500
+currency: "$"
 popular: false
 features:
   - 4 Horas de asesoria general remota
@@ -15,4 +16,5 @@ expirationDate: ""
 button:
   text: Empezar
   link: "#"
+order: 1
 ---
