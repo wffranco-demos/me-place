@@ -16,6 +16,7 @@ collections:
     preview_path: "blog/{{slug}}" # Path to the preview template for this collection
     fields: # The fields for each document, usually in front matter
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "snippet", widget: "string"}
       - {label: "Publish Date", name: "publishDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: "HH:mm"}
       - label: "Author"
         name: "author"
@@ -26,15 +27,15 @@ collections:
       - label: "Categories"
         name: "categories"
         widget: "relation"
-        collection: "options"
+        collection: "admin"
+        file: "options"
         multiple: true
         min: 1
-        search_fields: ["categories"]
-        value_field: "categories"
+        value_field: "categories.*"
+        search_fields: ["categories.*"]
       # - {label: "Category", name: "category", widget: "string"}
       # - {label: "Categories", name: "categories", widget: "string-array"}
       - {label: "Tags", name: "tags", widget: "list", allow_add: true, default: ["blog"]}
-      - {label: "Description", name: "snippet", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "draft", name: "draft",  widget: "hidden", default: false}
       - label: "Image"

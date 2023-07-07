@@ -18,7 +18,7 @@
           } else {
             values[index] = value;
           }
-          this.props.onChange(values.map(v => v.trim()).filter(v => v));
+          this.props.onChange(values.filter(v => v.trim()));
         },
         render() {
           const values = arrayOf(this.props.value);
@@ -45,6 +45,9 @@
             })
           ]);
         },
+        // componentWillUnmount() {
+        //   this.props.value = this.props.value.map(v => v.trim()).filter(v => v);
+        // },
       });
       
       const StringArrayPreview = createClass({
