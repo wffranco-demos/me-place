@@ -8,5 +8,62 @@
 </head>
 <body>
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <script>
+    (function() {
+      const arrayOf = values => values instanceof Array ? values : (values ? [values] : []);
+
+      const StringArrayControl = createClass({
+        handleChange(value, index) {
+          const values = arrayOf(this.props.value);
+          if (index >= values.length) {
+            values.push(value);
+          } else {
+            values[index] = value;
+          }
+          this.props.onChange(values.map(v => v.trim()).filter(v => v));
+        },
+        render() {
+          const values = arrayOf(this.props.value);
+          return h('div', {
+            className: this.props.classNameWrapper
+          }, [
+            ...values.map((value, index) => (
+              h('input', {
+                className: this.props.classNameWrapper,
+                key: index,
+                style: {marginBottom: '1em', borderDadius: 0},
+                type: 'text',
+                value: value || '',
+                onChange: e => this.handleChange(e.target.value, index),
+              })
+            )),
+            h('input', {
+              className: this.props.classNameWrapper,
+              key: values.length,
+              type: 'text',
+              value: '',
+              onChange: e => this.handleChange(e.target.value, values.length),
+            })
+          ]);
+        },
+      });
+      
+      const StringArrayPreview = createClass({
+        render() {
+          return h('ul', {}, arrayOf(this.props.value).map((val, index) => (
+            h('li', {key: index}, val)
+          )));
+        }
+      });
+      
+      const schema = {
+        properties: {
+          separator: { type: 'string' },
+        },
+      }
+      
+      CMS.registerWidget('string-array', StringArrayControl, StringArrayPreview, schema);
+    })();
+  </script>
 </body>
 </html>
