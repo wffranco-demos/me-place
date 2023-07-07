@@ -1,19 +1,21 @@
 ---
-author: Willem Franco
-category: Promociones, Fuerza laboral
-tags:
-  - blog
-  - Subscription-Workforce
-  - fuerza-laboral
-  - futuro
 title: "Subscription Workforce: La fuerza laboral del futuro"
-publishDate: 2023-07-06T17:39:57.064Z
 snippet: En la era digital en la que vivimos, la forma en que trabajamos está
   experimentando cambios significativos. Uno de los conceptos más innovadores
   que ha surgido es el de "Subscription Workforce" o "Fuerza laboral por
   suscripción". En este artículo, exploraremos en qué consiste este concepto
   revolucionario y cómo está transformando la manera en que las empresas y los
   trabajadores se relacionan en el mundo laboral.
+publishDate: 2023-07-06T17:39:57.064Z
+author: Willem Franco
+categories:
+  - Promociones
+  - Fuerza laboral
+tags:
+  - blog
+  - subscription-workforce
+  - fuerza-laboral
+  - futuro
 draft: false
 image:
   src: https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80

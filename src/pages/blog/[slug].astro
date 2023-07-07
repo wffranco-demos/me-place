@@ -23,7 +23,7 @@ const { Content } = await entry.render();
   <Container>
     <div class="mx-auto max-w-5xl mt-14">
       <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
-        {entry.data.category}
+        {entry.data?.categories?.join(', ')}
       </span>
       <h1
         class="text-4xl lg:text-5xl font-bold lg:tracking-tight mt-1 lg:leading-tight">
