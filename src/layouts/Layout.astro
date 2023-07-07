@@ -6,18 +6,17 @@ import "@fontsource/inter/variable.css";
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString().toLowerCase();
 
-const { 
-  title, 
+const {
+  title,
   description,
   image,
   imageAlt,
-  } = Astro.props;
+} = Astro.props;
 
 const makedTitle = title || "Materializa tus ideas en software";
 const makedDescription = (description || "Summit Software es una empresa de desarrollo de software a medida para empresas.").substring(0, 160);
 const makedImageAlt = imageAlt || "Summit Software";
 const makedImage = new URL( image || "/logo/logo-color.svg", Astro.site).toString();
-
 ---
 
 <!DOCTYPE html>
@@ -49,7 +48,7 @@ const makedImage = new URL( image || "/logo/logo-color.svg", Astro.site).toStrin
       }}
     />
   </head>
-  <body>
+  <body class="grid grid-rows-[auto_1fr_auto] min-h-screen">
     <Navbar />
     <slot />
     <Footer />

@@ -4,11 +4,11 @@ import { Picture } from "@astrojs/image/components";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
+import { getActive } from "@utils/all";
 
-// Filter team entries with 'draft: false' & date before current date
-const publishedTeamMembers = await getCollection("team", ({ data }) => {
-  return !data.draft && data.publishDate < new Date();
-});
+// Filter active menbers (entries with draft: false, published before current date and expiration after current date)
+const now = new Date;
+const publishedTeamMembers = await getCollection("team", ({ data }) => getActive(data, now));
 ---
 
 <Layout title="About">

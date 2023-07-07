@@ -9,70 +9,72 @@
 <body>
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
   <script>
-    (function() {
-      const StringArrayControl = createClass({
-        handleChange(value, index) {
-          const values = arrayOf(this.props.value);
-          if (index >= values.length) {
-            values.push(value);
-          } else {
-            values[index] = value;
-          }
-          this.props.onChange(values.filter(v => v.trim()));
-        },
-        render() {
-          const values = arrayOf(this.props.value);
-          return h('div', {
-            className: this.props.classNameWrapper
-          }, [
-            ...values.map((value, index) => (
+    (function(CMS) {
+      registerWidget({
+        name: 'string-array',
+        control: {
+          handleChange(value, index) {
+            const values = arrayOf(this.props.value);
+            if (index >= values.length) {
+              values.push(value);
+            } else {
+              values[index] = value;
+            }
+            this.props.onChange(values.filter(v => v.trim()));
+          },
+          render() {
+            const values = arrayOf(this.props.value);
+            return h('div', {
+              className: this.props.classNameWrapper
+            }, [
+              ...values.map((value, index) => (
+                h('input', {
+                  className: this.props.classNameWrapper,
+                  key: index,
+                  style: {marginBottom: '1em', borderRadius: 'unset'},
+                  type: 'text',
+                  value: value || '',
+                  onChange: e => this.handleChange(e.target.value, index),
+                })
+              )),
               h('input', {
                 className: this.props.classNameWrapper,
-                key: index,
-                style: {marginBottom: '1em', borderRadius: 'unset'},
+                key: values.length,
+                style: {borderRadius: 'unset'},
                 type: 'text',
-                value: value || '',
-                onChange: e => this.handleChange(e.target.value, index),
+                value: '',
+                onChange: e => this.handleChange(e.target.value, values.length),
               })
-            )),
-            h('input', {
-              className: this.props.classNameWrapper,
-              key: values.length,
-              style: {borderRadius: 'unset'},
-              type: 'text',
-              value: '',
-              onChange: e => this.handleChange(e.target.value, values.length),
-            })
-          ]);
+            ]);
+          },
+        },
+        preview: {
+          render() {
+            const label = this.props.field.get('label', '');
+            return h('div', {}, [
+              h('h2', {}, label),
+              h('ul', {}, arrayOf(this.props.value).map((val, index) => (
+                h('li', {key: index}, val)
+              )))
+            ]);
+          }
+        },
+        schema: {
+          properties: {
+            separator: { type: 'string' },
+          },
         },
       });
-      
-      const StringArrayPreview = createClass({
-        render() {
-          const label = this.props.field.get('label', '');
-          return h('div', {}, [
-            h('h2', {}, label),
-            h('ul', {}, arrayOf(this.props.value).map((val, index) => (
-              h('li', {key: index}, val)
-            )))
-          ]);
-        }
-      });
-      
-      const schema = {
-        properties: {
-          separator: { type: 'string' },
-        },
-      }
-      
-      CMS.registerWidget('string-array', StringArrayControl, StringArrayPreview, schema);
 
       function arrayOf(values) {
         if (values instanceof Array) return values;
         if (values?.toArray) return values.toArray();
         return values ? [values] : [];
-      } 
-    })();
+      }
+      function registerWidget({name, control, preview, schema = {}}) {
+        CMS.registerWidget(name, createClass(control), createClass(preview), schema);
+      }
+    })(window.CMS);
   </script>
 </body>
 </html>

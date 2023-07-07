@@ -1,0 +1,76 @@
+---
+import { Tick } from "@components/ui/icons";
+import Link from "@components/ui/link.astro";
+import { orders } from "@utils/consts";
+
+export interface Plan {
+  name: string;
+  type: string;
+  price: {
+    current?: number;
+    previous?: number;
+  };
+  currency: string;
+  features: string[];
+  popular: boolean;
+  draft: boolean;
+  publishDate: Date;
+  expirationDate?: Date;
+  button: {
+    text: string;
+    link: string;
+  };
+  order?: number;
+}
+
+interface Props {
+  plan: Plan;
+}
+
+const types = {
+  custom: 'Personalizado',
+  hour: 'hora',
+  monthly: 'mes',
+  annual: 'año',
+};
+
+const { plan } = Astro.props;
+---
+
+<div>
+  <div class:list={["flex flex-col w-full order-first lg:order-none border-2 border-[#D8DEE9] border-opacity-50 py-5 px-6 rounded-md", orders.get(plan?.order)]}>
+    <div class="text-center">
+      <h4 class="text-lg font-medium text-gray-400">{plan.name}</h4>
+      <p class="mt-3 text-4xl font-bold text-black md:text-4xl">
+        {plan.price.current && `${plan.currency}${plan.price.current}/`}{types[plan.type]}
+      </p>
+      {plan.price.current && plan.price.previous && (
+        <p class="flex flex-col mt-1 text-xl font-medium text-gray-400 md:text-2xl">
+          <span class="line-through">{plan.currency}{plan.price.previous}</span>
+          <small class="text-sm">{(100*(plan.price.previous - plan.price.current)/plan.price.previous).toFixed(2)}% de descuento</small>
+        </p>
+      )}
+    </div>
+    <ul class="grid mt-8 text-left gap-y-4">
+      {
+        plan.features.map((item) => (
+          <li class="flex items-start gap-3 text-gray-800">
+            <Tick class="w-6 h-6" />
+            <span>{item}</span>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="flex mt-8">
+      <Link
+        href={plan.button.link || "#"}
+        block
+        style={plan.popular ? "primary" : "outline"}>
+        {plan.button.text || "Get Started"}
+      </Link>
+    </div>
+  </div>
+  <div class="mt-5">
+    <pre class="p-2 border rounded">{JSON.stringify(plan, null, 2)}</pre>
+  </div>
+</div>

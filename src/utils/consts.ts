@@ -1,0 +1,33 @@
+export const orders: ReadonlyMap<string|number|undefined, string> = new Map([
+  [undefined, ''],
+  [-99, 'order-first'],
+  [-10, '-order-10'],
+  [-9, '-order-9'],
+  [-8, '-order-8'],
+  [-7, '-order-7'],
+  [-6, '-order-6'],
+  [-5, '-order-5'],
+  [-4, '-order-4'],
+  [-3, '-order-3'],
+  [-2, '-order-2'],
+  [-1, '-order-1'],
+  [0, 'order-none'],
+  [1, 'order-1'],
+  [2, 'order-2'],
+  [3, 'order-3'],
+  [4, 'order-4'],
+  [5, 'order-5'],
+  [6, 'order-6'],
+  [7, 'order-7'],
+  [8, 'order-8'],
+  [9, 'order-9'],
+  [10, 'order-10'],
+  [99, 'order-last'],
+]);
+
+export const price_types = {
+  custom: 'Personalizado',
+  hour: 'hora',
+  monthly: 'mes',
+  annual: 'año',
+};

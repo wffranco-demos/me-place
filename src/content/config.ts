@@ -1,5 +1,13 @@
 import { z, defineCollection } from 'astro:content';
 
+/** Transform elements before use it */
+const zz = {
+  /** Transform empty strings or null to undefined */
+  undef(format) {
+    return z.union([z.literal('').transform(() => undefined), z.literal(null).transform(() => undefined), format.nullable()]);
+  },
+};
+
 const blogCollection = defineCollection({
   schema: z.object({
     draft: z.boolean(),
@@ -10,11 +18,11 @@ const blogCollection = defineCollection({
       alt: z.string(),
     }),
     publishDate: z.date(),
-    author: z.string().default('Astroship'),
+    author: z.string(),
     // category: z.string(),
     categories: z.array(z.string()),
     tags: z.array(z.string())
-  }), 
+  }),
 });
 
 const teamCollection = defineCollection({
