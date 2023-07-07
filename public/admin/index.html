@@ -45,16 +45,17 @@
             })
           ]);
         },
-        // componentWillUnmount() {
-        //   this.props.value = this.props.value.map(v => v.trim()).filter(v => v);
-        // },
       });
       
       const StringArrayPreview = createClass({
         render() {
-          return h('ul', {}, arrayOf(this.props.value).map((val, index) => (
-            h('li', {key: index}, val)
-          )));
+          const label = this.props.field.get('label', '');
+          return h('div', {}, [
+            h('h2', {}, label),
+            h('ul', {}, arrayOf(this.props.value).map((val, index) => (
+              h('li', {key: index}, val)
+            )))
+          ]);
         }
       });
       
