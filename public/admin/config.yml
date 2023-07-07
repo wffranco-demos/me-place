@@ -17,8 +17,10 @@ collections:
     fields: # The fields for each document, usually in front matter
       - label: "Author"
         name: "author"
-        widget: "select"
-        options: ["Miharbi Hernandez", "Ramon Rivas", "Willem Franco"]
+        widget: "relation"
+        collection: "team"
+        search_fields: ["name"]
+        value_field: "name"
       - {label: "Category", name: "category", widget: "string"}
       - {label: "Title", name: "title", widget: "string"}
       # - {label: "Slug", name: "slug", widget: "slug"}
@@ -48,4 +50,31 @@ collections:
         fields:
         - {label: Alt, name: alt, widget: string}
         - {label: Avatar, name: src, widget: image}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "prices" # Used in routes, e.g., /admin/collections/blog
+    label: "Prices" # Used in the UI
+    folder: "src/content/prices" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    fields: # The fields for each document, usually in front matter
+      - {label: "Draft", name: "draft",  widget: "boolean", default: true}
+      - {label: "Name", name: "name", widget: "string"}
+      - label: "Price"
+        name: "price"
+        widget: "object"
+        fields:
+        - {label: "Monthly Price", name: monthly, widget: number}
+        - {label: "Previous Monthly", name: prev_monthly, widget: number}
+        - {label: "Annual Price", name: annual, widget: number}
+        - {label: "Previous Annual", name: prev_annual, widget: number}
+        - {label: "Title Price", name: title, widget: string}
+      - {label: "Popular", name: "popular",  widget: "boolean", default: false}
+      - {label: "Features", name: "features", widget: "markdown"}
+      - {label: "Publish Date", name: "publishDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: "HH:mm"}
+      - {label: "Expiration Date", name: "expirationDate", widget: "datetime", default: "", date_format: "YYYY-MM-DD", time_format: "HH:mm"}
+      - label: "Button"
+        name: "button"
+        widget: "object"
+        fields:
+        - {label: "Text", name: "text", widget: "string"}
+        - {label: "Link", name: "link", widget: "string"}
       
