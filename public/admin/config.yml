@@ -13,7 +13,17 @@ collections:
     folder: "src/content/blog" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    preview_path: "blog/{{slug}}" # Path to the preview template for this collection
+    preview_path: "src/pages/blog/{{slug}}" # Path to the preview template for this collection
+    sortable_fields: ['commit_date', 'title', 'commit_author', 'publishDate']
+    view_groups:
+      - label: Publish Date
+        field: publishDate
+        # groups items based on the value matched by the pattern
+        pattern: \d{4}
+      - label: Drafts
+        field: draft
+      - label: Authors
+        field: author
     fields: # The fields for each document, usually in front matter
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Description", name: "snippet", widget: "string"}
