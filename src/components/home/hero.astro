@@ -1,0 +1,29 @@
+---
+import { Picture } from "@astrojs/image/components";
+import homeImage from "@assets/home.jpg";
+---
+
+<div class="grid lg:grid-cols-2 gap-5 place-items-center">
+  <div class="sm:order-1 hidden sm:block">
+    <Picture
+      src={homeImage}
+      alt="Mountain"
+      widths={[200, 400, 600]}
+      height={400}
+      background="#0000"
+      aspectRatio="4:3"
+      sizes="(max-width: 800px) 100vw, 620px"
+      loading="eager"
+      format="png"
+    />
+  </div>
+  <div>
+    <h1 class="text-justify text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
+      En Summit somos mas que Apps
+    </h1>
+    <p class="text-justify text-lg mt-4 text-slate-600">
+      Summit es software a tu medida, es asesoria especializada, con nosotros tu proyecto se convierte en realidad y tu negocio en un exito. <wbr />
+      Somos especialistas en desarrollo de aplicaciones moviles y software a la medida.
+    </p>
+  </div>
+</div>
