@@ -1,0 +1,16 @@
+/* The integration's default injected base.css file */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  p {
+    @apply text-justify;
+  }
+}
+
+@layer components {
+  .secret {
+    @apply absolute opacity-0 -z-[1];
+  }
+}

@@ -7,6 +7,9 @@ module.exports = {
       fontFamily: {
         sans: ["InterVariable", "Inter", ...defaultTheme.fontFamily.sans],
       },
+      transitionProperty: {
+        'height': 'height',
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
