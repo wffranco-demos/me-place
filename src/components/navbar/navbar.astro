@@ -2,7 +2,7 @@
 import { Image } from "@astrojs/image/components";
 import logo from "/logo/logo-no-background.svg";
 
-import Link from "@components/ui/link.astro";
+// import Link from "@components/ui/link.astro";
 import Dropdown from "./dropdown.astro";
 import BurgerIcon from "../ui/icons/burger.astro";
 import TimesIcon from "../ui/icons/times.astro";
@@ -48,17 +48,17 @@ const menuitems = [
 ---
 
 <header class="max-w-screen-sm lg:max-w-screen-xl w-full lg:w-auto mx-auto p-5 relative flex flex-col lg:flex-row gap-x-16 gap-y-5">
-  <input id="navbar-toggler" type="checkbox" class="secret">
-  <div class="flex items-center justify-between gap-5 min-w-[180px]">
+  <div class="peer/toggler flex items-center justify-between gap-5 min-w-[180px]">
     <a href="/" class="text-lg">
       <Image src={logo} width={180} height={40} format="png" alt="Summit Software" />
     </a>
-    <label class="relative w-4 h-4 text-gray-800 cursor-pointer lg:hidden" for="navbar-toggler">
-      <BurgerIcon id="burger" class="absolute inset-0 w-full transition-opacity"  />
-      <TimesIcon id="times" class="absolute inset-0 w-full transition-opacity opacity-0" />
+    <label class="relative w-4 h-4 text-gray-800 cursor-pointer lg:hidden">
+      <input type="checkbox" class="child/toggler peer/toggler secret">
+      <BurgerIcon id="burger" class="peer-checked/toggler:opacity-0 absolute inset-0 w-full transition-opacity"  />
+      <TimesIcon id="times" class="opacity-0 peer-checked/toggler:opacity-100 absolute inset-0 w-full transition-opacity" />
     </label>
   </div>
-  <nav class="toggler-content overflow-hidden transition-height duration-200 w-full">
+  <nav class="h-0 peer-child-checked/toggler:h-full overflow-hidden lg:overflow-visible transition-height duration-200 w-full">
     <ul class="flex flex-col lg:flex-row lg:gap-3">
       {menuitems.filter(({hidden}) => !hidden).map((item, index) => (
         item.options ? (
@@ -85,18 +85,3 @@ const menuitems = [
     </div> -->
   </nav>
 </header>
-
-<style>
-  #navbar-toggler:not(:checked) ~ .toggler-content {
-    @apply h-0 lg:h-full;
-  }
-  #navbar-toggler:checked ~ .toggler-content {
-    @apply h-full;
-  }
-  #navbar-toggler:checked ~ div svg#burger {
-    @apply opacity-0;
-  }
-  #navbar-toggler:checked ~ div svg#times {
-    @apply opacity-100;
-  }
-</style>
