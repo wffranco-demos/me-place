@@ -13,13 +13,13 @@ collections:
     folder: "src/content/blog" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    preview_path: "src/pages/blog/{{slug}}" # Path to the preview template for this collection
-    sortable_fields: ['commit_date', 'title', 'commit_author', 'publishDate']
+    preview_path: "src/pages/blog/[slug]" # Path to the preview template for this collection
+    sortable_fields: ['commit_date', 'title', 'publishDate']
     view_groups:
       - label: Publish Date
         field: publishDate
         # groups items based on the value matched by the pattern
-        pattern: \d{4}
+        pattern: \d{4}-\d{2}
       - label: Drafts
         field: draft
       - label: Authors
@@ -75,8 +75,18 @@ collections:
   - label: "Prices" # Used in the UI
     name: "prices" # Used in routes, e.g., /admin/collections/blog
     folder: "src/content/prices" # The path to the folder where the documents are stored
-    slug: "{{year}}-{{month}}-{{day}}-{{name}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    slug: "{{year}}-{{month}}-{{day}}-{{type}}-{{name}}" # Filename template, e.g., YYYY-MM-DD-title.md
     create: true # Allow users to create new documents in this collection
+    sortable_fields: ['commit_date', 'name', 'publishDate']
+    view_groups:
+      - label: Publish Date
+        field: publishDate
+        # groups items based on the value matched by the pattern
+        pattern: \d{4}-\d{2}-\d{2}
+      - label: Drafts
+        field: draft
+      - label: Types
+        field: type
     fields: # The fields for each document, usually in front matter
       - {label: "draft", name: "draft",  widget: "hidden", default: false}
       - {label: "Name", name: "name", widget: "string"}
