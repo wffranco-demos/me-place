@@ -4,7 +4,7 @@ snippet: En el mundo de la tecnología, el desarrollo Full Stack se ha convertid
   en uno de los perfiles más demandados en la industria. Pero, ¿qué es
   exactamente el desarrollo Full Stack y por qué es tan valorado por las
   empresas?
-publishDate: 2023-07-06T16:59:21.902Z
+publishDate: 2023-06-21T16:59:21.902Z
 author: Miharbi Hernandez
 categories:
   - Programación
