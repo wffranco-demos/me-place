@@ -18,9 +18,10 @@ module.exports = {
     plugin(({ matchVariant }) => {
       const modifier = extra => extra?.modifier ? `\\/${extra.modifier}` : '';
       const values = {checked: 'checked'};
-      matchVariant('child', (value, extra) => `&:has(> .child${modifier(extra)}:${value}, * .child${modifier(extra)}:${value})`, {values});
-      matchVariant('peer-child', (value, extra) => `.peer${modifier(extra)}:has(> .child${modifier(extra)}:${value}, * .child${modifier(extra)}:${value}) ~ &`, {values});
-      matchVariant('parent-peer-child', (value, extra) => `.peer${modifier(extra)}:has(> .child${modifier(extra)}:${value}, * .child${modifier(extra)}:${value}) ~ .peer${modifier(extra)} &`, {values});
+      matchVariant('cousin', (value, extra) => `:has(> .cousin${modifier(extra)}:${value}, * .cousin${modifier(extra)}:${value}) ~ * &`, {values});
+      matchVariant('heir', (value, extra) => `&:has(> .heir${modifier(extra)}:${value}, * .heir${modifier(extra)}:${value})`, {values});
+      matchVariant('nephew', (value, extra) => `:has(> .nephew${modifier(extra)}:${value}, * .nephew${modifier(extra)}:${value}) ~ &`, {values});
+      matchVariant('uncle', (value, extra) => `.uncle${modifier(extra)}:${value} ~ * &`, {values});
     }),
   ],
 };
