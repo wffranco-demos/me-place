@@ -20,6 +20,7 @@ module.exports = {
       const values = {checked: 'checked'};
       matchVariant('child', (value, extra) => `&:has(> .child${modifier(extra)}:${value}, * .child${modifier(extra)}:${value})`, {values});
       matchVariant('peer-child', (value, extra) => `.peer${modifier(extra)}:has(> .child${modifier(extra)}:${value}, * .child${modifier(extra)}:${value}) ~ &`, {values});
+      matchVariant('parent-peer-child', (value, extra) => `.peer${modifier(extra)}:has(> .child${modifier(extra)}:${value}, * .child${modifier(extra)}:${value}) ~ .peer${modifier(extra)} &`, {values});
     }),
   ],
 };

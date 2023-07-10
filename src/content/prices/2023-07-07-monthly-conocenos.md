@@ -3,8 +3,8 @@ draft: false
 name: Conocenos
 type: monthly
 price:
-  current: 1000
-  previous: 1500
+  current: 1500
+  previous: 2000
 currency: "$"
 popular: false
 features:

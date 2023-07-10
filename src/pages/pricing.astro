@@ -2,14 +2,30 @@
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
-import PriceComponent from "@components/price.astro";
+import PlanComponent, { Plan, PlanType } from "@components/plan.astro";
 import { getCollection } from "astro:content";
 import { getActive } from "@utils/all";
+import { price_types } from "@utils/consts";
+
+export type PlanGroups = {
+  [key in PlanType]?: Plan[];
+}
+interface PlanReducer {
+  groups: PlanGroups;
+  types: PlanType[];
+}
 
 // Filter active menbers (entries with draft: false, published before current date and expiration after current date)
 const now = new Date;
 const collection = await getCollection("prices", ({ data }) => getActive(data, now));
-const publishedPrices = collection.map(({data}) => data);
+const {groups, types} = collection.reduce<PlanReducer>(({groups, types}, {data: plan}) => {
+  const {type} = plan as Plan;
+  if (type !== "custom" && !types.includes(type)) {
+    types.push(type);
+  }
+  (groups[type] ||= []).push(plan as Plan);
+  return {groups, types};
+}, {groups: {}, types: []});
 ---
 
 <Layout title="Pricing">
@@ -17,15 +33,55 @@ const publishedPrices = collection.map(({data}) => data);
     <Sectionhead>
       <Fragment slot="title">Precios</Fragment>
       <Fragment slot="desc">
-        <span>Evita contratar personal para que desarrollen tus aplicaciones...</span>
-        <span>Deja que nosotros nos encarguemos de eso, y tú enfócate en tu negocio.</span>
+        <span class="text-center">Evita contratar personal para que desarrollen tus aplicaciones...</span>
+        <span class="text-center">Deja que nosotros nos encarguemos de eso, y tú enfócate en tu negocio.</span>
       </Fragment>
     </Sectionhead>
 
-    <div class="flex flex-wrap justify-evenly gap-5 mx-auto max-w-screen-lg mt-12">
-      {publishedPrices.map((item) => (
-        <PriceComponent plan={item} />
-      ))}
+    <div class="flex flex-col justify-evenly gap-5 mx-auto max-w-screen-lg mt-12">
+      <div class="peer/hourly peer/monthly peer/annual plan-types flex justify-center gap-5">
+        {groups.hourly && (
+          <label class="child-checked/hourly:bg-black child-checked/hourly:text-white focus-within:outline outline-blue-500 capitalize border px-3 py-2 rounded">
+            <input type="radio" class="child/hourly secret" name="price-type" checked={types[0] === "hourly"} value="hourly" />
+            {price_types.hourly}
+          </label>
+        )}
+        {groups.monthly && (
+          <label class="child-checked/monthly:bg-black child-checked/monthly:text-white focus-within:outline outline-blue-500 capitalize border px-3 py-2 rounded">
+            <input type="radio" class="child/monthly secret" name="price-type" checked={types[0] === "monthly"} value="monthly" />
+            {price_types.monthly}
+          </label>
+        )}
+        {groups.annual && (
+          <label class="child-checked/annual:bg-black child-checked/annual:text-white focus-within:outline outline-blue-500 capitalize border px-3 py-2 rounded">
+            <input type="radio" class="child/annual secret" name="price-type" checked={types[0] === "annual"} value="annual" />
+            {price_types.annual}
+          </label>
+        )}
+      </div>
+      <div class="peer/hourly peer/monthly peer/annual flex flex-wrap justify-center gap-5">
+        {groups?.hourly?.map((item) => (
+          <PlanComponent class="hidden parent-peer-child-checked/hourly:block" plan={item} />
+        ))}
+        {groups?.monthly?.map((item) => (
+          <PlanComponent class="hidden parent-peer-child-checked/monthly:block" plan={item} />
+        ))}
+        {groups?.annual?.map((item) => (
+          <PlanComponent class="hidden parent-peer-child-checked/annual:block" plan={item} />
+        ))}
+        {groups?.custom?.map((item) => (
+          <PlanComponent plan={item} />
+        ))}
+      </div>
     </div>
   </Container>
 </Layout>
+
+<style>
+  .plan-types > label {
+    @apply text-gray-500 bg-white hover:bg-gray-100;
+  }
+  input[type="radio"]:not(:checked) + .group {
+    display: none;
+  }
+</style>

@@ -26,8 +26,8 @@ export const orders: ReadonlyMap<string|number|undefined, string> = new Map([
 ]);
 
 export const price_types = {
-  custom: 'Personalizado',
-  hour: 'hora',
+  custom: 'personalizado',
+  hourly: 'hora',
   monthly: 'mes',
   annual: 'año',
 };
