@@ -1,14 +1,15 @@
 ---
 draft: false
-name: Conocenos
+name: Soporte Avanzado
 type: hourly
 price:
   current: 25
   previous: ""
 currency: "$"
 popular: true
+description: "Profundizaremos más en tus necesidades:"
 features:
-  - Asesoria general remota
+  - Asesoria general
   - Análisis de requerimientos
   - Solución de problemas complejos
   - Integraciones

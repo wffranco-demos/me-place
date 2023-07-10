@@ -1,19 +1,20 @@
 ---
 draft: false
-name: Seamos Socios
+name: "¿Necesitas Más?"
 type: custom
 price:
   current: ""
   previous: ""
 currency: "$"
 popular: false
+description: "Contactanos y te haremos un presupuesto personalizado."
 features:
-  - Programadores in house
-  - Desarrolladores / asesores dedicados
-  - Reuniones diarias
-  - Administración Scrum
-  - Integraciones de API, CMS, ERP, etc.
   - Soporte a tu medida
+  - Desarrolladores / asesores dedicados
+  - Programadores in house
+  - Administración Scrum
+  - Despliegue e integraciones de API, CMS, ERP, etc.
+  - Y mucho más...
 publishDate: 2023-07-07T15:56:18.769Z
 expirationDate: ""
 button:

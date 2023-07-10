@@ -107,6 +107,7 @@ collections:
           - {label: "Previous", name: previous, widget: number, required: false}
       - {label: "Currency", name: "currency", widget: "string", default: "$"}
       - {label: "Popular", name: "popular",  widget: "boolean", default: false}
+      - {label: "Description", name: "description", widget: "string", required: false}
       - {label: "Features", name: "features", widget: "string-array"}
       - {label: "Publish Date", name: "publishDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: "HH:mm"}
       - {label: "Expiration Date", name: "expirationDate", widget: "datetime", default: "", date_format: "YYYY-MM-DD", time_format: "HH:mm", required: false}

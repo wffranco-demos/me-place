@@ -49,6 +49,7 @@ const priceCollection = defineCollection({
     }),
     currency: z.string().default('$'),
     popular: z.boolean(),
+    description: z.string(),
     features: z.array(z.string()),
     publishDate: z.date(),
     expirationDate: zz.undef(z.date()),

@@ -7,10 +7,13 @@ price:
   previous: 8000
 currency: "$"
 popular: true
+description: "Si deseas un soporte más avanzado, podemos ayudarte con:"
 features:
-  - 10 Horas de asesoria remota, reuniones semanales
-  - 60 horas de desarrollo, entregas semanales
+  - 8 Horas de asesoria remota
+  - 10 horas de desarrollo de emergencia remoto
   - Integraciones de API, CMS, ERP, etc.
+  - Entregas semanales
+  - Reuniones semanales
 publishDate: 2023-07-07T15:56:18.769Z
 expirationDate: ""
 button:
