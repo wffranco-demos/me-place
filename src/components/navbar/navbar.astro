@@ -1,10 +1,8 @@
 ---
-import { Image } from "@astrojs/image/components";
-import logo from "/logo/logo-no-background.svg";
-
 // import Link from "@components/ui/link.astro";
 import Dropdown from "./dropdown.astro";
 import BurgerIcon from "../ui/icons/burger.astro";
+import FullLogo from "../ui/icons/full-logo.astro";
 import TimesIcon from "../ui/icons/times.astro";
 
 const menuitems = [
@@ -47,18 +45,21 @@ const menuitems = [
 ];
 ---
 
-<header class="max-w-screen-sm lg:max-w-screen-xl w-full lg:w-auto mx-auto p-5 relative flex flex-col lg:flex-row gap-x-16 gap-y-5">
+<header x-data="{open: false}" class="max-w-screen-sm lg:max-w-screen-xl w-full lg:w-auto mx-auto p-5 relative flex flex-col lg:flex-row gap-x-16 gap-y-5">
   <div class="flex items-center justify-between gap-5 min-w-[180px]">
     <a href="/" class="text-lg">
-      <Image src={logo} width={180} height={40} format="png" alt="Summit Software" />
+      <FullLogo class="h-12" />
     </a>
-    <label class="relative w-4 h-4 text-gray-800 cursor-pointer lg:hidden">
-      <input type="checkbox" class="nephew/toggler peer/toggler secret">
-      <BurgerIcon id="burger" class="peer-checked/toggler:opacity-0 absolute inset-0 w-full transition-opacity"  />
-      <TimesIcon id="times" class="opacity-0 peer-checked/toggler:opacity-100 absolute inset-0 w-full transition-opacity" />
-    </label>
+    <button class="relative w-4 h-4 text-gray-800 cursor-pointer lg:hidden" @click="open = !open">
+      <BurgerIcon class="absolute inset-0 w-full transition-opacity" :class="{'opacity-0': open}" />
+      <TimesIcon class="absolute inset-0 w-full transition-opacity opacity-0" :class="{'opacity-100': open}" />
+    </button>
   </div>
-  <nav class="h-0 nephew-checked/toggler:h-full overflow-hidden lg:overflow-visible transition-height duration-200 w-full">
+  <nav
+    class="max-h-0 overflow-hidden lg:overflow-visible transition-[max-height] w-full"
+    x-ref="content"
+    :style="{maxHeight: open ? `${$refs.content.scrollHeight}px` : undefined}"
+  >
     <ul class="flex flex-col lg:flex-row lg:gap-3">
       {menuitems.filter(({hidden}) => !hidden).map((item, index) => (
         item.options ? (
