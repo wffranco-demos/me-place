@@ -1,5 +1,5 @@
 ---
-// import Link from "@components/ui/link.astro";
+import Link from "@components/ui/link.astro";
 import Dropdown from "./dropdown.astro";
 import BurgerIcon from "../ui/icons/burger.astro";
 import FullLogo from "../ui/icons/full-logo.astro";
@@ -45,7 +45,7 @@ const menuitems = [
 ];
 ---
 
-<header x-data="{open: false}" class="max-w-screen-sm lg:max-w-screen-xl w-full lg:w-auto mx-auto p-5 relative flex flex-col lg:flex-row gap-x-16 gap-y-5">
+<header x-data="{open: false}" class="max-w-screen-sm lg:max-w-screen-xl w-full mx-auto p-5 relative flex flex-col lg:flex-row gap-x-16 gap-y-5">
   <div class="flex items-center justify-between gap-5 min-w-[180px]">
     <a href="/" class="text-lg">
       <FullLogo class="h-12" />
@@ -56,7 +56,7 @@ const menuitems = [
     </button>
   </div>
   <nav
-    class="max-h-0 overflow-hidden lg:overflow-visible transition-[max-height] w-full"
+    class="max-h-0 overflow-hidden lg:overflow-visible transition-[max-height] w-full justify-end"
     x-ref="content"
     :style="{maxHeight: open ? `${$refs.content.scrollHeight}px` : undefined}"
   >
@@ -79,10 +79,16 @@ const menuitems = [
           </li>
         )
       ))}
+      <li class="hidden lg:flex pl-20">
+        <Link href="#" size="md" class="flex p-2" style="muted">Log in</Link>
+      </li>
+      <li class="hidden lg:flex">
+        <Link href="#" size="md" class="flex p-2">Sign up</Link>
+      </li>
     </ul>
-    <!-- <div class="lg:hidden flex items-center mt-3 gap-4">
+    <div class="lg:hidden flex items-center mt-3 gap-4">
       <Link href="#" style="muted" block size="md">Log in</Link>
       <Link href="#" size="md" block>Sign up</Link>
-    </div> -->
+    </div>
   </nav>
 </header>

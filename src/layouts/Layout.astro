@@ -15,8 +15,8 @@ const {
 } = Astro.props;
 
 const makedTitle = title || "Materializa tus ideas en software";
-const makedDescription = (description || "Summit Software es una empresa de desarrollo de software a medida para empresas.").substring(0, 160);
-const makedImageAlt = imageAlt || "Summit Software";
+const makedDescription = (description || "Codefy es una empresa de desarrollo de software por subscripción.").substring(0, 160);
+const makedImageAlt = imageAlt || "Codefy";
 const makedImage = new URL( image || "/logo/logo-color.svg", Astro.site).toString();
 ---
 
@@ -33,14 +33,14 @@ const makedImage = new URL( image || "/logo/logo-color.svg", Astro.site).toStrin
       canonical={canonical}
       twitter={{
         creator: "@mihrbi",
-        site: "@summitsoftware",
+        site: "@codefy",
         card: "summary_large_image",
       }}
       openGraph={{
         basic: {
           url: canonical,
           type: "website",
-          title: makedTitle + " - Summit Software",
+          title: makedTitle + " - Codefy",
           image: makedImage,
         },
         image: {

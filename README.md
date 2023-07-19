@@ -9,9 +9,9 @@ Alternatively, you can clone the project directly from this repo to your local s
 ### 1. Clone the repo
 
 ```bash
-git clone https://mihrbi@bitbucket.org/mihrbi/summitweb.git summit
+git clone git@github.com:codefy-dev/codefy-web.git codefy-dev
 # or
-git clone https://mihrbi@bitbucket.org/mihrbi/summitweb.git .
+git clone git@github.com:codefy-dev/codefy-web.git .
 ```
 
 The `.` will clone it to the current directory so make sure you are inside your project folder first.
