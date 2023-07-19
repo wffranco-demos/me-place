@@ -1,0 +1,30 @@
+---
+import Moon from "@components/ui/icons/moon.astro";
+import Pc from "@components/ui/icons/pc.astro";
+import Sun from "@components/ui/icons/sun.astro";
+---
+
+<div
+  x-data={`{
+    get mode() {
+      return localStorage.theme || 'pc';
+    },
+    toggle() {
+      const mode = localStorage.theme || 'pc';
+      if (mode === 'dark') {
+        localStorage.theme = 'light';
+        document.documentElement.classList.remove('dark');
+      if (mode === 'pc') {
+        localStorage.theme = 'dark';
+        document.documentElement.classList.add('dark');
+      } else
+      } else {
+      }
+    },
+  }`}
+  class="relative w-6 aspect-square"
+>
+  <Moon x-show="mode === 'dark'" class="absolute w-full aspect-square" />
+  <Sun x-show="mode === 'light'" class="absolute w-full aspect-square" />
+  <Pc x-show="mode === 'pc'" class="absolute w-full aspect-square" />
+</div>
