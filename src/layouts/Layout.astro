@@ -27,6 +27,7 @@ const makedImage = new URL( image || "/logo/logo-color.svg", Astro.site).toStrin
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
+    <script is:inline src="/js/dark-mode.js"></script>
     <SEO
       title={makedTitle}
       description={makedDescription}
