@@ -1,30 +1,36 @@
 ---
-import Moon from "@components/ui/icons/moon.astro";
-import Pc from "@components/ui/icons/pc.astro";
-import Sun from "@components/ui/icons/sun.astro";
+const props = Astro.props;
 ---
 
-<div
-  x-data={`{
-    get mode() {
-      return localStorage.theme || 'pc';
-    },
-    toggle() {
-      const mode = localStorage.theme || 'pc';
-      if (mode === 'dark') {
-        localStorage.theme = 'light';
-        document.documentElement.classList.remove('dark');
-      if (mode === 'pc') {
-        localStorage.theme = 'dark';
-        document.documentElement.classList.add('dark');
-      } else
-      } else {
-      }
-    },
-  }`}
-  class="hidden relative w-6 aspect-square"
->
-  <Moon x-show="mode === 'dark'" class="absolute w-full aspect-square" />
-  <Sun x-show="mode === 'light'" class="absolute w-full aspect-square" />
-  <Pc x-show="mode === 'pc'" class="absolute w-full aspect-square" />
+<div {...props}>
+  <svg
+    class="w-5 text-transparent cursor-pointer"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    x-data={`{
+      mode: 'pc',
+      title() {
+        if (this.mode === 'light') return 'Light mode';
+        if (this.mode === 'dark') return 'Dark mode';
+        return 'Default mode';
+      },
+      toggle() {
+        DarkMode.toggle();
+        this.update();
+      },
+      update() {
+        this.mode = DarkMode.mode;
+        document.documentElement.classList.toggle('dark', DarkMode.enabled);
+      },
+    }`}
+    x-init="update"
+    @click="toggle"
+  >
+    <title x-text="title()" />
+    <path id="pc" class="transition-colors" :class="{'text-black': mode === 'pc'}" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+    <path id="dark" class="transition-colors" :class="{'text-black': mode === 'dark'}" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+    <path id="light" class="transition-colors" :class="{'text-black': mode === 'light'}" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+  </svg>
 </div>
