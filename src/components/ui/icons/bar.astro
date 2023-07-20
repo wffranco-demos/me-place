@@ -1,0 +1,13 @@
+---
+import { ClassList } from '@utils/types';
+interface Props {
+  class?: ClassList;
+  bar?: boolean;
+}
+
+const {bar, class: className} = Astro.props;
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" class:list={[className]} fill="currentColor" viewBox="0 0 50 200">
+  <rect width="15" height="184" x="17.5" y="8" rx="20%" />
+</svg>

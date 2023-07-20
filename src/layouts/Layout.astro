@@ -50,7 +50,7 @@ const makedImage = new URL( image || "/logo/logo-color.svg", Astro.site).toStrin
       }}
     />
   </head>
-  <body class="grid grid-rows-[auto_1fr_auto] gap-5 min-h-screen">
+  <body class="grid grid-rows-[auto_1fr_auto] gap-5 min-h-screen min-w-[320px]">
     <Navbar />
     <slot />
     <Footer />

@@ -1,10 +1,11 @@
 ---
 import Link from "@components/ui/link.astro";
 import Dropdown from "./dropdown.astro";
+import Bar from "@components/ui/icons/bar.astro";
 import BurgerIcon from "../ui/icons/burger.astro";
-import FullLogo from "../ui/icons/full-logo.astro";
-import TimesIcon from "../ui/icons/times.astro";
 import Darkmode from "./darkmode.astro";
+import Logo from "../ui/icons/logo.astro";
+import TimesIcon from "../ui/icons/times.astro";
 
 const menuitems = [
   {
@@ -48,8 +49,10 @@ const menuitems = [
 
 <header x-data="{open: false}" class="max-w-screen-sm lg:max-w-screen-xl w-full mx-auto p-5 relative flex flex-col lg:flex-row gap-x-16 gap-y-5">
   <div class="flex items-center justify-between gap-5 min-w-[180px]">
-    <a href="/" class="text-lg">
-      <FullLogo class="h-10" />
+    <a href="/" class="flex gap-1">
+      <Logo bar class="h-10" />
+      <Bar class="h-10" />
+      <span class="text-4xl font-sans">Codefy</span>
     </a>
     <button class="relative w-4 h-4 text-gray-800 cursor-pointer lg:hidden" @click="open = !open">
       <BurgerIcon class="absolute inset-0 w-full transition-opacity" :class="{'opacity-0': open}" />
