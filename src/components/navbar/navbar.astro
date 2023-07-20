@@ -1,11 +1,10 @@
 ---
-import Link from "@components/ui/link.astro";
-import Dropdown from "./dropdown.astro";
 import Bar from "@components/ui/icons/bar.astro";
-import BurgerIcon from "../ui/icons/burger.astro";
 import Darkmode from "./darkmode.astro";
+import Dropdown from "./dropdown.astro";
+import Link from "@components/ui/link.astro";
 import Logo from "../ui/icons/logo.astro";
-import TimesIcon from "../ui/icons/times.astro";
+import Menu from "@components/ui/icons/menu.astro";
 
 const menuitems = [
   {
@@ -47,25 +46,20 @@ const menuitems = [
 ];
 ---
 
-<header x-data="{open: false}" class="max-w-screen-sm lg:max-w-screen-xl w-full mx-auto p-5 relative flex flex-col lg:flex-row gap-x-16 gap-y-5">
-  <div class="flex items-center justify-between gap-5 min-w-[180px]">
-    <a href="/" class="flex gap-1">
-      <Logo bar class="h-10" />
-      <Bar class="h-10" />
-      <span class="text-4xl font-sans">Codefy</span>
-    </a>
-    <button class="relative w-4 h-4 text-gray-800 cursor-pointer lg:hidden" @click="open = !open">
-      <BurgerIcon class="absolute inset-0 w-full transition-opacity" :class="{'opacity-0': open}" />
-      <TimesIcon class="absolute inset-0 w-full transition-opacity opacity-0" :class="{'opacity-100': open}" />
-    </button>
-  </div>
-  <Darkmode class="hidden" />
+<header x-data="{open: false}" class="max-w-screen-sm lg:max-w-screen-xl w-full mx-auto p-5 relative flex flex-wrap gap-x-3 items-center justify-between">
+  <a href="/" class="grow lg:grow-0 flex gap-1">
+    <Logo bar class="h-10" />
+    <Bar class="h-10" />
+    <span class="text-4xl font-sans">Codefy</span>
+  </a>
+  <Menu open="open" class="w-4 aspect-square text-gray-800 cursor-pointer lg:hidden" @click="open = !open"/>
+  <Darkmode class="hidden lg:order-last" />
   <nav
-    class="max-h-0 overflow-hidden lg:overflow-visible transition-[max-height] w-full justify-end"
+    class="w-full lg:w-fit max-h-0 lg:max-h-fit overflow-hidden transition-[max-height]"
     x-ref="content"
     :style="{maxHeight: open ? `${$refs.content.scrollHeight}px` : undefined}"
   >
-    <ul class="flex flex-col lg:flex-row lg:gap-3">
+    <ul class="flex flex-col lg:flex-row lg:gap-3 lg:items-center mt-5 lg:mt-0">
       {menuitems.filter(({hidden}) => !hidden).map((item, index) => (
         item.options ? (
           <Dropdown
@@ -84,16 +78,10 @@ const menuitems = [
           </li>
         )
       ))}
-      <li class="hidden lg:flex pl-20">
-        <Link href="#" size="md" class="flex p-2" style="muted">Log in</Link>
-      </li>
-      <li class="hidden lg:flex">
-        <Link href="#" size="md" class="flex p-2">Sign up</Link>
+      <li class="grid grid-cols-2 gap-3 lg:ml-10">
+        <Link href="#" size="md" class="p-2 text-center" style="muted">Log in</Link>
+        <Link href="#" size="md" class="p-2 text-center">Sign up</Link>
       </li>
     </ul>
-    <div class="lg:hidden flex items-center mt-3 gap-4">
-      <Link href="#" style="muted" block size="md">Log in</Link>
-      <Link href="#" size="md" block>Sign up</Link>
-    </div>
   </nav>
 </header>
