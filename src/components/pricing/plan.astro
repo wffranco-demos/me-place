@@ -1,31 +1,9 @@
 ---
-import { Tick } from "@components/ui/icons";
+import Tick from "@components/ui/icons/tick.astro";
 import Link from "@components/ui/link.astro";
 import { orders, price_types as types } from "@utils/consts";
 import { ClassList } from "@utils/types";
-
-export type PlanType = 'hourly' | 'monthly' | 'annual' | 'custom';
-
-export interface Plan {
-  name: string;
-  type: PlanType;
-  price: {
-    current?: number;
-    previous?: number;
-  };
-  currency: string;
-  description: string;
-  features: string[];
-  popular: boolean;
-  draft: boolean;
-  publishDate: Date;
-  expirationDate?: Date;
-  button: {
-    text: string;
-    link: string;
-  };
-  order?: number;
-}
+import { Plan } from "./shared";
 
 interface Props {
   class?: ClassList;
@@ -38,23 +16,23 @@ const { class: className, plan } = Astro.props;
 <div class:list={["w-80", orders.get(plan?.order), className]}>
   <div class="flex flex-col gap-6 w-full order-first lg:order-none border-2 border-[#D8DEE9] border-opacity-50 py-5 px-6 rounded-md">
     <div class="text-center">
-      <h4 class="text-lg font-medium text-gray-400">{plan.name}</h4>
-      <h2 class:list={["mt-3 text-4xl font-bold text-black md:text-4xl", {capitalize: plan.type === "custom"}]}>
+      <h4 class="text-lg font-medium text-secondary">{plan.name}</h4>
+      <h2 class:list={["mt-3 text-4xl font-bold text-primary md:text-4xl", {capitalize: plan.type === "custom"}]}>
         {plan.price.current && `${plan.currency}${plan.price.current}/`}{types[plan.type]}
       </h2>
       {plan.price.current && plan.price.previous && (
-        <h4 class="flex flex-col line-through text-lg font-medium text-gray-400 md:text-2xl">
+        <h4 class="flex flex-col line-through text-lg font-medium text-gray-400 dark:text-gray-600 md:text-2xl">
           {plan.currency}{plan.price.previous}
         </h4>
-        <h5 class="flex flex-col text-sm font-medium text-gray-400">
+        <h5 class="flex flex-col text-sm font-medium text-gray-400 dark:text-gray-600">
           {(100*(plan.price.previous - plan.price.current)/plan.price.previous).toFixed(0)}% de descuento
         </h5>
       )}
     </div>
     <div class="text-justify">{plan.description}</div>
-    <ul class="grid text-left gap-y-4">
+    <ul class="grid text-left gap-y-4 text-secondary">
       {plan.features.map((item) => (
-        <li class="grid grid-cols-[auto_1fr] gap-2 items-start text-gray-800">
+        <li class="grid grid-cols-[auto_1fr] gap-2 items-start">
           <Tick class="w-6 h-6" />
           <span>{item}</span>
         </li>

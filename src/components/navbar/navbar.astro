@@ -1,10 +1,9 @@
 ---
 import Bar from "@components/ui/icons/bar.astro";
 import Darkmode from "./darkmode.astro";
-import Dropdown from "./dropdown.astro";
-import Link from "@components/ui/link.astro";
 import Logo from "../ui/icons/logo.astro";
 import Menu from "@components/ui/icons/menu.astro";
+import Navigation from "./navigation.astro";
 
 const menuitems = [
   {
@@ -47,41 +46,34 @@ const menuitems = [
 ---
 
 <header x-data="{open: false}" class="max-w-screen-sm lg:max-w-screen-xl w-full mx-auto p-5 relative flex flex-wrap gap-x-3 items-center justify-between">
-  <a href="/" class="grow lg:grow-0 flex gap-1">
+  <div id="astronav-menu" class="hidden"></div>
+  <a href="/" class="mr-auto lg:mr-0 flex gap-1">
     <Logo bar class="h-10" />
     <Bar class="h-10" />
     <span class="text-4xl font-sans">Codefy</span>
   </a>
   <Menu open="open" class="w-4 aspect-square text-gray-800 cursor-pointer lg:hidden" @click="open = !open"/>
-  <Darkmode class="hidden lg:order-last" />
-  <nav
-    class="w-full lg:w-fit max-h-0 lg:max-h-fit overflow-hidden transition-[max-height]"
+  <Navigation class="hidden lg:block" />
+  <Darkmode class="lg:order-last" />
+  <Navigation
+    class="w-full lg:hidden"
+    style="display: none;"
+    :style="{'--max-height': `${$refs.content.scrollHeight}px`}"
     x-ref="content"
-    :style="{maxHeight: open ? `${$refs.content.scrollHeight}px` : undefined}"
+    x-show="open"
+    x-transition:enter="transition ease-out origin-center duration-200"
+    x-transition:enter-start="opacity-0 transform scale-90"
+    x-transition:enter-end="opacity-100 transform scale-100"
+    x-transition:leave="transition origin-center ease-in duration-100"
+    x-transition:leave-start="opacity-100 transform scale-100"
+    x-transition:leave-end="opacity-0 transform scale-90"
+  />
+    <!-- x-ref="content"
+    :style="{'--max-height': `${$refs.content.scrollHeight}px`}" -->
+  <!-- <nav
+    class="w-full lg:w-fit max-h-0 lg:max-h-fit overflow-hidden transition-[max-height] order-last"
+    x-ref="content"
+    :style="{'--max-height': `${$refs.content.scrollHeight}px`}"
   >
-    <ul class="flex flex-col lg:flex-row lg:gap-3 lg:items-center mt-5 lg:mt-0">
-      {menuitems.filter(({hidden}) => !hidden).map((item, index) => (
-        item.options ? (
-          <Dropdown
-            title={item.title}
-            options={item.options}
-            lastItem={index === menuitems.length - 1}
-          />
-        ) : (
-          <li>
-            <a
-              href={item.disabled ? '#' : item.path}
-              class="flex p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-200 lg:hover:bg-gray-100 rounded"
-            >
-              {item.title}
-            </a>
-          </li>
-        )
-      ))}
-      <li class="grid grid-cols-2 gap-3 lg:ml-10">
-        <Link href="#" size="md" class="p-2 text-center" style="muted">Log in</Link>
-        <Link href="#" size="md" class="p-2 text-center">Sign up</Link>
-      </li>
-    </ul>
-  </nav>
+  </nav> -->
 </header>

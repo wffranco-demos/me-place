@@ -1,0 +1,72 @@
+---
+import Dropdown from "./dropdown.astro";
+import Link from "@components/ui/link.astro";
+
+const menuitems = [
+  {
+    title: "Features",
+    path: "#",
+    options: [
+      { title: "Action", path: "#" },
+      { title: "Another action", path: "#" },
+      { title: "Dropdown Submenu", path: "#" },
+    ],
+    hidden: true,
+  },
+  {
+    title: "Servicios",
+    path: "/services",
+    hidden: true,
+  },
+  {
+    title: "Blog",
+    path: "/blog",
+  },
+  {
+    title: "Nosotros",
+    path: "/about",
+  },
+  {
+    title: "Portafolio",
+    path: "/portfolio",
+    disabled: true,
+  },
+    {
+      title: "Precios",
+      path: "/pricing",
+    },
+  {
+    title: "Contacto",
+    path: "/contact",
+  },
+];
+
+const props = Astro.props;
+---
+
+<nav {...props}>
+  <ul class="flex flex-col lg:flex-row lg:gap-3 lg:items-center m-1 mt-5 lg:mt-1">
+    {menuitems.filter(({hidden}) => !hidden).map((item, index) => (
+      item.options ? (
+        <Dropdown
+          title={item.title}
+          options={item.options}
+          lastItem={index === menuitems.length - 1}
+        />
+      ) : (
+        <li>
+          <a
+            href={item.disabled ? '#' : item.path}
+            class="flex p-2 text-gray-500 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-black/20 dark:hover:bg-white/20 lg:hover:bg-black/10 lg:dark:hover:bg-white/10 rounded"
+          >
+            {item.title}
+          </a>
+        </li>
+      )
+    ))}
+    <li class="grid grid-cols-2 gap-3 mt-3 lg:mt-0 lg:ml-10">
+      <Link href="#" size="md" class="p-2 text-center" style="muted">Log in</Link>
+      <Link href="#" size="md" class="p-2 text-center">Sign up</Link>
+    </li>
+  </ul>
+</nav>

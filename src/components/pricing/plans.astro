@@ -1,0 +1,35 @@
+---
+import PlanItem from "./plan.astro";
+import { price_types } from "@utils/consts";
+import { PlanGroups, PlanType } from "./shared";
+import Label from "./label.astro";
+
+const related_groups = [
+  ["hourly", "cousin/hourly", "cousin-checked/hourly:block"],
+  ["monthly", "cousin/monthly", "cousin-checked/monthly:block"],
+  ["annual", "cousin/annual", "cousin-checked/annual:block"],
+];
+
+interface Props {
+  groups: PlanGroups;
+  types: PlanType[];
+}
+
+const { groups, types } = Astro.props;
+---
+
+<div class="flex flex-col justify-evenly gap-5 mx-auto max-w-screen-lg mt-12">
+  <div class="plan-types flex justify-center gap-5">
+    {related_groups.map(([type, relation]) => groups[type] && (
+      <Label checked={types[0] === type} relation={relation} value={type}>
+        {price_types[type]}
+      </Label>
+    ))}
+  </div>
+  <div class="flex flex-wrap justify-center gap-5">
+    {related_groups.map(([type, _, link]) => groups?.[type]?.map(item => (
+      <PlanItem class={["hidden", link]} plan={item} />
+    )))}
+    {groups?.custom?.map(item => <PlanItem plan={item} />)}
+  </div>
+</div>

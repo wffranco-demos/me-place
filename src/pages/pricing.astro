@@ -1,15 +1,12 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
+import Plans from "@components/pricing/plans.astro";
 import Sectionhead from "@components/sectionhead.astro";
-import PlanComponent, { Plan, PlanType } from "@components/plan.astro";
+import { Plan, PlanGroups, PlanType } from "@components/pricing/shared";
 import { getCollection } from "astro:content";
 import { getActive } from "@utils/all";
-import { price_types } from "@utils/consts";
 
-export type PlanGroups = {
-  [key in PlanType]?: Plan[];
-}
 interface PlanReducer {
   groups: PlanGroups;
   types: PlanType[];
@@ -38,50 +35,7 @@ const {groups, types} = collection.reduce<PlanReducer>(({groups, types}, {data: 
       </Fragment>
     </Sectionhead>
 
-    <div class="flex flex-col justify-evenly gap-5 mx-auto max-w-screen-lg mt-12">
-      <div class="plan-types flex justify-center gap-5">
-        {groups.hourly && (
-          <label class="heir-checked/hourly:bg-black heir-checked/hourly:text-white focus-within:outline outline-blue-500 capitalize border px-3 py-2 rounded">
-            <input type="radio" class="heir/hourly cousin/hourly secret" name="price-type" checked={types[0] === "hourly"} value="hourly" />
-            {price_types.hourly}
-          </label>
-        )}
-        {groups.monthly && (
-          <label class="heir-checked/monthly:bg-black heir-checked/monthly:text-white focus-within:outline outline-blue-500 capitalize border px-3 py-2 rounded">
-            <input type="radio" class="heir/monthly cousin/monthly secret" name="price-type" checked={types[0] === "monthly"} value="monthly" />
-            {price_types.monthly}
-          </label>
-        )}
-        {groups.annual && (
-          <label class="heir-checked/annual:bg-black heir-checked/annual:text-white focus-within:outline outline-blue-500 capitalize border px-3 py-2 rounded">
-            <input type="radio" class="heir/annual cousin/annual secret" name="price-type" checked={types[0] === "annual"} value="annual" />
-            {price_types.annual}
-          </label>
-        )}
-      </div>
-      <div class="flex flex-wrap justify-center gap-5">
-        {groups?.hourly?.map((item) => (
-          <PlanComponent class="hidden cousin-checked/hourly:block" plan={item} />
-        ))}
-        {groups?.monthly?.map((item) => (
-          <PlanComponent class="hidden cousin-checked/monthly:block" plan={item} />
-        ))}
-        {groups?.annual?.map((item) => (
-          <PlanComponent class="hidden cousin-checked/annual:block" plan={item} />
-        ))}
-        {groups?.custom?.map((item) => (
-          <PlanComponent plan={item} />
-        ))}
-      </div>
-    </div>
+    <Plans groups={groups} types={types} />
   </Container>
 </Layout>
-
-<style>
-  .plan-types > label {
-    @apply text-gray-500 bg-white hover:bg-gray-100;
-  }
-  input[type="radio"]:not(:checked) + .group {
-    display: none;
-  }
-</style>
+@components/pricing/plans.astro@components/pricing/shared

@@ -15,3 +15,5 @@ class DarkMode {
     return DarkMode.enabled;
   }
 }
+
+document.documentElement.classList.toggle("dark", DarkMode.enabled);

@@ -4,6 +4,7 @@ import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Cta from "@components/cta.astro";
 import { Picture } from "@astrojs/image/components";
+import Link from "@components/ui/link.astro";
 
 // Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -48,7 +49,7 @@ const { Content } = await entry.render();
           }
         </div>
       </div>
-      <p class="mt-3 text-gray-500">
+      <p class="mt-3 text-secondary">
         {entry.data.snippet}
       </p>
     </div>
@@ -68,11 +69,9 @@ const { Content } = await entry.render();
       <Content />
     </div>
     <div class="text-center mt-8">
-      <a
-        href="/blog"
-        class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
-        >← Regresar al blog</a
-      >
+      <Link href="/blog" style="muted">
+        ← Regresar al blog
+      </Link>
     </div>
     <Cta maxw="5"/>
   </Container>

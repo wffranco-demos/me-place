@@ -21,10 +21,10 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => getActive
     </Sectionhead>
 
     <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-      <h2 class="font-bold text-3xl text-gray-800">
+      <h2 class="font-bold text-3xl text-primary">
         No es solo un trabajo, es una pasión.
       </h2>
-      <p class="text-lg leading-relaxed text-slate-500">
+      <p class="text-lg leading-relaxed text-secondary">
         Somos un grupo de emprendedores que se dedican a la creación de aplicaciones web y móviles, con el objetivo de ayudar a las empresas a crecer.
         Nuestra misión es brindar el mejor servicio a nuestros clientes, con el fin de que puedan alcanzar sus objetivos, llevando sus negocios al siguiente nivel.
       </p>
@@ -48,10 +48,10 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => getActive
             </div>
 
             <div class="mt-4 text-center">
-              <h2 class="text-lg text-gray-800">
+              <h2 class="text-lg text-primary">
                 {teamMemberEntry.data.name}
               </h2>
-              <h3 class="text-sm text-slate-500">
+              <h3 class="text-sm text-secondary">
                 {teamMemberEntry.data.title}
               </h3>
             </div>

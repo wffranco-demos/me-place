@@ -1,0 +1,27 @@
+---
+import { ClassList } from '@utils/types';
+
+const classes = [
+  "focus-within:outline outline-slate-500 capitalize px-3 py-2 rounded",
+  "text-black heir-checked:text-white",
+  "bg-black/10 hover:bg-black/20",
+  "heir-checked:bg-black heir-checked:hover:bg-gray-800",
+  "dark:text-white dark:heir-checked:text-black",
+  "dark:bg-white/10 dark:hover:bg-white/20",
+  "dark:heir-checked:bg-gray-200 dark:heir-checked:hover:bg-white",
+];
+
+interface Props {
+  checked: boolean;
+  class?: ClassList;
+  relation: string;
+  value: string;
+}
+
+const {checked, class: className, relation, value} = Astro.props;
+---
+
+<label class:list={[classes, className]}>
+  <input type="radio" class:list={["heir secret", relation]} name="price-type" checked={checked} value={value} />
+  <slot />
+</label>
