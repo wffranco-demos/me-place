@@ -2,7 +2,7 @@
 import Bar from "@components/ui/icons/bar.astro";
 import Darkmode from "./darkmode.astro";
 import Logo from "../ui/icons/logo.astro";
-import Menu from "@components/ui/icons/menu.astro";
+import Menu from "./menu.astro";
 import Navigation from "./navigation.astro";
 
 const menuitems = [
@@ -52,7 +52,7 @@ const menuitems = [
     <Bar class="h-10" />
     <span class="text-4xl font-sans">Codefy</span>
   </a>
-  <Menu open="open" class="w-4 aspect-square text-gray-800 cursor-pointer lg:hidden" @click="open = !open"/>
+  <Menu open="open" class="w-4 aspect-square text-primary cursor-pointer lg:hidden" @click="open = !open"/>
   <Navigation class="hidden lg:block" />
   <Darkmode class="lg:order-last" />
   <Navigation

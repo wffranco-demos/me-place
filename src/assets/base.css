@@ -25,6 +25,12 @@
 }
 
 @layer components {
+  .fade {
+    @apply transition-opacity opacity-0;
+  }
+  .fade.show {
+    @apply opacity-100;
+  }
   .secret {
     @apply absolute opacity-0 -z-[1];
   }

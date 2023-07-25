@@ -1,0 +1,16 @@
+---
+const {class: className, open, ...props} = Astro.props;
+---
+
+<button class:list={['relative', className]} {...props}>
+  <svg
+    class="absolute inset-0 w-full aspect-square"
+    fill="currentColor"
+    viewBox="0 0 20 20"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <title x-text={`${open} ? 'Hide Menu' : 'Show Menu'`} />
+    <path class="fade" :class={`{show: !${open}}`} fill-rule="evenodd" d="M2 3h16a1 1 0 0 1 0 2H2a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H2a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H2a1 1 0 0 1 0-2z"/>
+    <path class="fade" :class={`{show: ${open}}`} fill-rule="evenodd" d="M16.278 14.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z" clip-rule="evenodd"/>
+  </svg>
+</button>
